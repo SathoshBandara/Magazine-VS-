@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Viewer</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        .viewer-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+        }
+        .pdf-container {
+            width: 100%;
+            height: 90vh;
+            border: 1px solid #030303;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .pdf-viewer {
+            width: 100%;
+            height: 100%;
+            border: none;
+            padding: auto;
+        }
+        .fullscreen-btn {
+            position: relative;
+            top: 0px;
+            right: px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .fullscreen-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        /* Fullscreen styles */
+        .pdf-container.fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            max-width: none;
+            z-index: 9999;
+            border-radius: 0;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="viewer-wrapper">
+        <button class="fullscreen-btn" onclick="toggleFullscreen()">
+            ⤢ Fullscreen
+        </button>
+    
+            <div class="pdf-container" id="pdfContainer">
+                <!-- Replace the src attribute with your PDF file path (use the preview URL from Drive) -->
+-                <embed class="pdf-viewer" 
+-                       type="application/pdf"
+-                       src="https://drive.google.com/file/d/176eaa2cNgBsZqLoT1i19XPa2D-WVntPS/preview">
++                <iframe class="pdf-viewer"
++                        src="https://drive.google.com/file/d/176eaa2cNgBsZqLoT1i19XPa2D-WVntPS/preview"
++                        frameborder="0"
++                        allowfullscreen>
++                </iframe>
+            </div>
+ 
+    </div>
+
+    <script>
+        function toggleFullscreen() {
+            const container = document.getElementById('pdfContainer');
+            const button = document.querySelector('.fullscreen-btn');
+            
+            if (!document.fullscreenElement) {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                button.innerHTML = '⤓ Exit Fullscreen';
+                container.classList.add('fullscreen');
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+                button.innerHTML = '⤢ Fullscreen';
+                container.classList.remove('fullscreen');
+            }
+        }
+
+        // Listen for fullscreen change events
+        document.addEventListener('fullscreenchange', function() {
+            const button = document.querySelector('.fullscreen-btn');
+            const container = document.getElementById('pdfContainer');
+            
+            if (!document.fullscreenElement) {
+                button.innerHTML = '⤢ Fullscreen';
+                container.classList.remove('fullscreen');
+            }
+        });
+    </script>
+</body>
+</html>
