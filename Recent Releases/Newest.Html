@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Newest</title>
 
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css"/>
+
     <style>
     
         body {
@@ -16,10 +19,40 @@
             min-height: 100vh;
             font-family: Arial, sans-serif;
         }
+        .header-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            padding: 10px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1001;
+        }
+        body.dark-mode .header-bar {
+            background: #242424;
+            border-bottom-color: #404040;
+        }
+        .header-bar a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        body.dark-mode .header-bar a {
+            color: #e0e0e0;
+        }
+        .header-bar h3 {
+            margin: 0;
+            font-size: 18px;
+        }
         .viewer-wrapper {
             position: relative;
             width: 100%;
             max-width: 1000px;
+            margin-top: 60px;
         }
         .pdf-container {
             width: 100%;
@@ -66,6 +99,10 @@
     </style>
 </head>
 <body>
+    <div class="header-bar">
+        <h3><a href="../index.html">← Back to Home</a></h3>
+        <button class="dark-mode-toggle" title="Dark Mode"><i class="fa fa-moon-o"></i></button>
+    </div>
     <div class="viewer-wrapper">
         <button class="fullscreen-btn" onclick="toggleFullscreen()">
             ⤢ Fullscreen
@@ -124,6 +161,7 @@
             }
         });
     </script>
+    <script src="../assets/js/dark-mode.js"></script>
 </body>
 
 </html>

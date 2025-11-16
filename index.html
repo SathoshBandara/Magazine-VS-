@@ -6,7 +6,7 @@
 <html class="noIE" lang="en-US">
 <!--<![endif]-->
 	<head>
-		<title>test2</title>
+		<title>THE CATALYST</title>
 
 		<!-- meta -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,6 +30,39 @@
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 		<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 		<link rel="stylesheet" href="assets/css/style.css" media="screen"/>
+		<link rel="stylesheet" href="assets/css/dark-mode.css"/>
+
+		<style>
+			/* Zoom in and zoom out animation for header background */
+			@keyframes zoomInOut {
+				0% {
+					background-size: 100%;
+				}
+				50% {
+					background-size: 120%;
+				}
+				100% {
+					background-size: 100%;
+				}
+			}
+
+			@-webkit-keyframes zoomInOut {
+				0% {
+					-webkit-background-size: 100%;
+				}
+				50% {
+					-webkit-background-size: 120%;
+				}
+				100% {
+					-webkit-background-size: 100%;
+				}
+			}
+
+			#header.header-wrapper {
+				animation: zoomInOut 30s ease-in-out infinite;
+				-webkit-animation: zoomInOut 30s ease-in-out infinite;
+			}
+		</style>
 
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -73,6 +106,7 @@
 							<h1><a href="index.html"><img src="FB_IMG_1761281338351.png" alt="SSDRC logo" style="height:60px; vertical-align:middle; margin-right:8px;">SSDRC</a></h1>
 						</div>
 						<div class="pull-right">
+							<button class="dark-mode-toggle" title="Dark Mode"><i class="fa fa-moon-o"></i></button>
 							<a class="toggleDrawer" href="#"><i class="fa fa-bars fa-2x"></i></a>
 						</div>
 					</section>
@@ -173,6 +207,7 @@
 		<script src="assets/js/jquery.actual.min.js"></script>
 		<script src="assets/js/jquery.scrollTo.min.js"></script>
 		<script src="assets/js/script.js"></script>
+		<script src="assets/js/dark-mode.js"></script>
 
 	</body>
 </html>

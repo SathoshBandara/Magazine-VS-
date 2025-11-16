@@ -1,0 +1,140 @@
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .content-block {
+    background-color: #242424;
+    color: #e0e0e0;
+}
+
+body.dark-mode .header-wrapper {
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #404040;
+}
+
+body.dark-mode .header-wrapper a {
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 {
+    color: #e0e0e0;
+}
+
+body.dark-mode p {
+    color: #b0b0b0;
+}
+
+body.dark-mode .block-heading {
+    color: #e0e0e0;
+}
+
+body.dark-mode .block-heading p {
+    color: #b0b0b0;
+}
+
+body.dark-mode .btn {
+    background-color: #404040;
+    color: #e0e0e0;
+    border-color: #505050;
+}
+
+body.dark-mode .btn:hover {
+    background-color: #505050;
+    border-color: #606060;
+}
+
+body.dark-mode .btn-o,
+body.dark-mode .btn-o-white {
+    background-color: transparent;
+    color: #e0e0e0;
+    border: 2px solid #e0e0e0;
+}
+
+body.dark-mode .btn-o:hover,
+body.dark-mode .btn-o-white:hover {
+    background-color: #e0e0e0;
+    color: #1a1a1a;
+}
+
+body.dark-mode .recent-caption {
+    background-color: #242424;
+    color: #e0e0e0;
+}
+
+body.dark-mode .contributor-card {
+    background-color: #242424;
+    color: #e0e0e0;
+}
+
+body.dark-mode .contributor-name {
+    color: #e0e0e0;
+}
+
+body.dark-mode .contributor-role {
+    color: #b0b0b0;
+}
+
+body.dark-mode #drawer-right {
+    background-color: #242424;
+    color: #e0e0e0;
+}
+
+body.dark-mode #drawer-right h2,
+body.dark-mode #drawer-right h3 {
+    color: #e0e0e0;
+}
+
+body.dark-mode #drawer-right a {
+    color: #e0e0e0;
+}
+
+body.dark-mode .slogan {
+    color: #e0e0e0;
+}
+
+body.dark-mode .secondary-slogan {
+    color: #b0b0b0;
+}
+
+body.dark-mode #footer {
+    background-color: #1a1a1a;
+    border-top: 1px solid #404040;
+    color: #b0b0b0;
+}
+
+body.dark-mode input,
+body.dark-mode textarea {
+    background-color: #333333;
+    color: #e0e0e0;
+    border-color: #505050;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #808080;
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+    cursor: pointer;
+    font-size: 20px;
+    padding: 8px 12px;
+    border: none;
+    background: none;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+    color: #555;
+}
+
+body.dark-mode .dark-mode-toggle {
+    color: #e0e0e0;
+}
+
+body.dark-mode .dark-mode-toggle:hover {
+    color: #ffffff;
+}
