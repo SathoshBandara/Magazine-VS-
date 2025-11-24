@@ -120,15 +120,33 @@ h1, h2, h3, h4, h5, h6{
 	padding: auto; 
 }
 
+#header.header-wrapper2 {
+	background: url(../images/header-bg2.png) no-repeat center center;
+	background-size: cover;
+	display: table;
+	height: 70vh;
+	width: 100%;
+	position: relative;
+	z-index: 1;
+	overflow-x: hidden;
+	padding: auto; 
+}
+
 @media screen and (max-width: 767px) and (orientation: landscape) {
     #header.header-wrapper {
 		height: auto;
 		min-height: 100vh;
 		padding: 0px; 
 	} 
+
+	#header.header-wrapper2 {
+		height: auto;
+		min-height: 70vh;
+		padding: 0px; 
+	}
 }
 
-#header.header-wrapper .header-wrapper-inner {
+#header.header-wrapper .header-wrapper-inner, #header.header-wrapper2 .header-wrapper-inner {
     display: table-cell;
     text-align: center;
     vertical-align: middle; 
@@ -177,6 +195,21 @@ h1, h2, h3, h4, h5, h6{
 
 #header .secondary-slogan{
 	font-size: 1.6em;
+	color: rgba(255,255,255,.5);
+	line-height: 1em;
+	font-family: 'Alegreya SC';
+}
+
+#header .slogan2{
+	font-size: 6em;
+	margin-bottom: 15px;
+	line-height: 1em;
+	font-family: 'Nixie One';
+	color: white;
+}
+
+#header .secondary-slogan2{
+	font-size: 1.2em;
 	color: rgba(255,255,255,.5);
 	line-height: 1em;
 	font-family: 'Alegreya SC';
@@ -475,6 +508,14 @@ h1, h2, h3, h4, h5, h6{
 
 	#header .secondary-slogan {
 		font-size: 1.2em;
+	}
+
+	#header .slogan2 {
+		font-size: 3.5em; 
+	} 
+
+	#header .secondary-slogan2 {
+		font-size: 1em;
 	}
 
 	#header .bottom {
