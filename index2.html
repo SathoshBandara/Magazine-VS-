@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<!--[if IE 7 ]><html class="ie ie7 lte9 lte8 lte7" lang="en-US"><![endif]-->
+<!--[if IE 8]><html class="ie ie8 lte9 lte8" lang="en-US">	<![endif]-->
+<!--[if IE 9]><html class="ie ie9 lte9" lang="en-US"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="noIE" lang="en-US">
+<!--<![endif]-->
+	<head>
+		<title>THE CATALYST</title>
+
+		<!-- meta -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no"/>
+		
+		<!-- meta description -->
+		<meta name="description" content="SSDRC - SCIENCE SOCIETY DHARMARAJA COLLEGE"/>
+		
+		<!-- favicon -->
+		<link rel="icon" type="image/png" href="assets/images/ssdrc-logo2.png"/>
+
+		<!-- google fonts -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:regular,bold"/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya+Sans:regular,italic,bold,bolditalic"/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nixie+One:regular,italic,bold,bolditalic"/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya+SC:regular,italic,bold,bolditalic"/>
+		
+		<!-- css -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+		<link rel="stylesheet" href="assets/css/style.css" media="screen"/>
+		<link rel="stylesheet" href="assets/css/dark-mode.css"/>
+
+		<style>
+			/* Zoom in and zoom out animation for header background */
+			@keyframes zoomInOut {
+				0% {
+					background-size: 100%;
+				}
+				50% {
+					background-size: 120%;
+				}
+				100% {
+					background-size: 100%;
+				}
+			}
+
+			@-webkit-keyframes zoomInOut {
+				0% {
+					-webkit-background-size: 100%;
+				}
+				50% {
+					-webkit-background-size: 120%;
+				}
+				100% {
+					-webkit-background-size: 100%;
+				}
+			}
+
+			#header.header-wrapper {
+				animation: zoomInOut 60s ease-in-out infinite;
+				-webkit-animation: zoomInOut 60s ease-in-out infinite;
+			}
+
+			@media (max-width: 767px) {
+				#header.header-wrapper {
+				animation: none;
+			}
+			}
+
+			/*///////////////////////////////////////////////////*/
+
+			/* Slideshow Animation */
+			@keyframes slideshow-fade {
+				0% {
+					opacity: 0;
+				}
+				10% {
+					opacity: 1;
+				}
+				90% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+
+			@-webkit-keyframes slideshow-fade {
+				0% {
+					opacity: 0;
+				}
+				10% {
+					opacity: 1;
+				}
+				90% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+
+	/* Slideshow Container */
+			.slideshow-container {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 0;
+				overflow: hidden;
+				border-radius: 10px;
+			}
+
+			.slide {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+				top: 0;
+				left: 0;
+				background-size: cover;
+				background-position: center center;
+				cursor: pointer;
+				transition: opacity 0.5s ease;
+			}
+			.slide.active {
+				opacity: 1;
+			}
+
+			/* Slide overlay for better text visibility */
+			.slide::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.3);
+				z-index: 1;
+			}
+
+			/* Slide Navigation Controls */
+			.slide-nav {
+				position: absolute;
+				bottom: 30px;
+				left: 50%;
+				transform: translateX(-50%);
+				display: flex;
+				gap: 10px;
+				z-index: 0; /*previous value=10*/
+			}
+
+			.slide-dot {
+				width: 12px;
+				height: 12px;
+				border-radius: 50%;
+				background: rgba(255, 255, 255, 0.5);
+				cursor: pointer;
+				transition: all 0.3s ease;
+			}
+
+			.slide-dot.active {
+				background: white;
+				transform: scale(1.3);
+			}
+
+			.slide-dot:hover {
+				background: rgba(255, 255, 255, 0.8);
+			}
+
+			/* Slide indicators counter */
+			.slide-counter {
+				position: absolute;
+				bottom: 30px;
+				right: 30px;
+				color: white;
+				font-size: 0.95em;
+				background: rgba(0, 0, 0, 0.5);
+				padding: 5px 12px;
+				border-radius: 20px;
+				z-index: 0; /*previous value=10*/
+			}
+
+			body.dark-mode .slide-counter {
+				background: rgba(255, 255, 255, 0.1);
+			}
+
+			/* Arrow Navigation Controls */
+			.slide-arrow {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				background: rgba(255, 255, 255, 0.6);
+				color: #2c3e50;
+				border: none;
+				font-size: 2em;
+				width: 50px;
+				height: 50px;
+				cursor: pointer;
+				z-index: 0; /*previous value=10*/
+				transition: all 0.3s ease;
+				border-radius: 50px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-weight: bold;
+			}
+
+			.slide-arrow:hover {
+				background: rgba(255, 255, 255, 0.9);
+				transform: translateY(-50%) scale(1.1);
+			}
+
+			.slide-arrow:active {
+				transform: translateY(-50%) scale(0.95);
+			}
+
+			.slide-arrow.left {
+				left: 20px;
+			}
+
+			.slide-arrow.right {
+				right: 20px;
+			}
+
+			body.dark-mode .slide-arrow {
+				background: rgba(0, 0, 0, 0.6);
+				color: #e0e0e0;
+			}
+
+			body.dark-mode .slide-arrow:hover {
+				background: rgba(0, 0, 0, 0.9);
+			}
+
+			@media (max-width: 768px) {
+				.slide-arrow {
+					width: 40px;
+					height: 40px;
+					font-size: 1.5em;
+				}
+
+				.slide-arrow.left {
+					left: 10px;
+				}
+
+				.slide-arrow.right {
+					right: 10px;
+				}
+			}
+
+			/* View button overlay on slideshow */
+			.slide-view-btn {
+				position: absolute;
+				padding: auto;
+				bottom: 50px;
+				left: 50%;
+				transform: translateX(-50%);
+				cursor: touch;
+				z-index: 1;
+				display: inline-block;
+				padding: 10px 20px;
+				background: linear-gradient(135deg, #ffdf2a 0%, #db8534 100%);
+				color: #fff;
+				text-decoration: none;
+				font-weight: 700;
+				border-radius: 25px;
+				box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+				transition: all 0.3s ease;
+				display: flex;
+				align-items: center;
+				justify-content: center			}
+
+			.slide-view-btn:hover {
+				transform: translateX(-50%) translateY(-2px) scale(1.02);
+				box-shadow: 0 10px 22px rgba(0,0,0,0.28);
+			}
+
+			body.dark-mode .slide-view-btn {
+				background: linear-gradient(135deg, #1f6ea6 0%, #2b86c6 100%);
+			}
+
+			.slideshow-header {
+				/*background: #2c3e50;
+				/*display: table;*/
+				/*height: 100vh;*/
+				width: 100%;
+				position: relative;
+				/*z-index: 2;*/
+				/*overflow-x: hidden;*/
+				padding-top: 50px;
+			}
+
+			.slideshow-header-inner {
+				height: 80vh;
+				width: 80vw;
+				position: relative;
+				/*z-index: 2;*/
+				/*overflow-x: hidden;*/
+			}
+
+		</style>
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="assets/js/html5shiv.js"></script>
+			<script src="assets/js/respond.js"></script>
+		<![endif]-->
+
+		<!--[if IE 8]>
+	    	<script src="assets/js/selectivizr.js"></script>
+	    <![endif]-->
+	</head>
+	
+	<body>
+		<!--drawer-menu-right-->
+		<div id="drawer-right">
+			<div class="cross text-right">
+				<a class="toggleDrawer" href="#"><i class="fa fa-times-circle fa-2x"></i></a>
+			</div>
+			<h2>Menu</h2><br>
+			<nav>
+				<a href="index.html"><h3><i class="fa fa-home"></i> &nbsp;Home</h3></a>
+				<a href="#releases"><h3><i class="fa fa-tasks"></i> &nbsp;Releases</h3></a>
+				<a href="#about"><h3><i class="fa fa-bookmark"></i> &nbsp;About</h3></a>
+				<a href="#notices"><h3><i class="fa fa-envelope"></i> &nbsp;Notices</h3></a>
+			</nav>
+			<div class="social">
+				<br><h2>Stay Connected</h2>
+				<a href=""><h3><i class="fa fa-facebook-square"></i></h3></a>
+				<a href=""><h3><i class="fa fa-instagram"></i></h3></a>
+			</div>
+		</div>
+
+
+		<div id="wrapper">
+			<!--header-section-->
+			<div class="content-block header-wrapper" id="header">
+				<div class="header-wrapper-inner">
+					<!--top-clear-bar-->
+					<section class="top clearfix">
+						<div class="pull-left">
+							<h1><a href="index.html"><img src="assets/images/ssdrc-logo2.png" alt="SSDRC logo" style="height:60px; vertical-align:middle; margin-right:8px;">SSDRC</a></h1>
+						</div>
+						<div class="pull-right">
+							<button class="dark-mode-toggle" title="Dark Mode"><i class="fa fa-moon-o"></i></button>
+							<a class="toggleDrawer" href="#"><i class="fa fa-bars fa-2x"></i></a>
+						</div>
+					</section>
+					<!--middle-hero-cover-->
+					<section class="center">
+						<div class="slogan">
+							THE CATALYST
+						</div>
+						<div class="secondary-slogan">
+							Monthly Science Magazine
+						</div>
+					</section>
+					<!--bottom-arrow-->
+					<section class="bottom">
+						<a href="#releases">
+							<img src="assets/images/arrow_down.png">
+						</a>
+					</section>
+				</div>
+			</div>
+
+			<!--//////////////////////////////////////////////////////////////-->
+
+			<div class="slideshow-header">
+				<center><div class="slideshow-header-inner">
+					<!-- Slideshow Container -->
+					<div class="slideshow-container">
+						<div class="slide active" id="slide1"></div>
+						<div class="slide" id="slide2"></div>
+						<div class="slide" id="slide3"></div>
+						<div class="slide" id="slide4"></div>
+						<!-- View button (updates to current slide link) -->
+						<a id="slide-view-btn" class="slide-view-btn" href="#" target="_self">View</a>
+					</div>
+
+					<!-- Slide Navigation Dots -->
+					<div class="slide-nav">
+						<span class="slide-dot active" onclick="currentSlide(0)"></span>
+						<span class="slide-dot" onclick="currentSlide(1)"></span>
+						<span class="slide-dot" onclick="currentSlide(2)"></span>
+						<span class="slide-dot" onclick="currentSlide(3)"></span>
+					</div>
+
+					<!-- Left Arrow -->
+					<button class="slide-arrow left" onclick="prevSlide()" title="Previous Slide">
+						<i class="fa fa-chevron-left"></i>
+					</button>
+
+					<!-- Right Arrow -->
+					<button class="slide-arrow right" onclick="nextSlide()" title="Next Slide">
+						<i class="fa fa-chevron-right"></i>
+					</button>
+
+					<!-- Slide Counter -->
+					<div class="slide-counter">
+						<span id="current-slide">1</span> / <span id="total-slides">4</span>
+					</div>
+				</div></center>
+			</div>
+			
+			<!--releases-section-->
+			<div class="content-block" id="releases">
+				<div class="container">
+					<header class="block-heading cleafix text-center">
+						<!--<a href="#" class="btn btn-o btn-lg pull-right">View All</a>-->
+						<h1>Recent</h1>
+						<p>Take a look at our recent releases</p>
+					</header>
+					<section class="block-body">
+						<div class="row">
+							<div class="col-sm-4">
+								<a href="Recent Releases\Newest.Html" class="recent-work" style="background-image:url(assets/images/sample1.png)">
+									<span class="btn btn-o-white">View</span>
+								</a>
+								<div class="recent-caption">
+									<center><h3>Newest Issue</h3></center>
+									
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<a href="Recent Releases\Earlier.html" class="recent-work" style="background-image:url(assets/images/sample2.png)">
+									<span class="btn btn-o-white">View</span>
+								</a>
+								<div class="recent-caption">
+									<center><h3>Earlier Issue</h3></center>
+									
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<a href="Recent Releases/Earlier2.html" class="recent-work" style="background-image:url(assets/images/sample1.png)">
+									<span class="btn btn-o-white">View</span>
+								</a>
+								<div class="recent-caption">
+									<center><h3>Oldest Edition</h3></center>
+									
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+
+		
+
+			<!--contact-section-->
+			<div class="content-block" id="contact">
+				<div class="container text-center">
+					<header class="block-heading cleafix">
+						<h1>Get in Touch</h1>
+						<p>Feel free to drop us a line.</p>
+					</header>
+					<section class="block-body">
+								<a href="https://forms.gle/oyWaqyRXzb5DAxdK8" class="btn btn-o-white"style="border-radius: 10px;">Suggestions</a><br><br>
+								<a href="https://forms.gle/vwMVtbDZZuUWv2TL8" class="btn btn-o-white" style="border-radius: 10px;">Complaints</a>
+					</section>
+				</div>
+			</div>
+
+			<!--footer-section-->
+			<div class="content-block" id="footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-6">&copy; Copyright SSDRC</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div><!--/#wrapper-->
+
+
+
+
+		<script src="assets/js/jquery-2.1.3.min.js"></script>
+		<script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
+		<script src="assets/js/jquery.actual.min.js"></script>
+		<script src="assets/js/jquery.scrollTo.min.js"></script>
+		<script src="assets/js/script.js"></script>
+		<script src="assets/js/dark-mode.js"></script>
+
+		<!--///////////////////////////////////////////////////////////-->
+
+		<script>
+			// Slideshow Configuration
+			const slides = [
+				{
+					image: 'assets/images/the catalyst.png',
+					link: 'releases main.html',
+					title: 'Magazine'
+				},
+				{
+					image: 'assets/images/sample2.png',
+					link: 'notices.html',
+					title: 'Notices & Articles'
+				},
+				{
+					image: 'assets/images/header-bg2.png',
+					link: 'about.html',
+					title: 'About Contributors'
+				},
+				{
+					image: 'assets/images/newsletter-bg.png',
+					link: 'Recent Releases/Newest.Html',
+					title: 'Latest Magazine'
+				}
+			];
+
+			let currentIndex = 0;
+			let slideTimer;
+
+			// Initialize Slideshow
+			function initSlideshow() {
+				// set total slides counter
+				const totalEl = document.getElementById('total-slides');
+				if (totalEl) totalEl.textContent = slides.length;
+				updateSlides();
+				autoNextSlide();
+			}
+
+			// Update slide display
+			function updateSlides() {
+				const slides_elements = document.querySelectorAll('.slide');
+				const dots = document.querySelectorAll('.slide-dot');
+
+				slides_elements.forEach((slide, index) => {
+					slide.classList.remove('active');
+					slide.style.backgroundImage = `url('${slides[index].image}')`;
+					if (index === currentIndex) {
+						slide.classList.add('active');
+					}
+				});
+
+				dots.forEach((dot, index) => {
+					dot.classList.remove('active');
+					if (index === currentIndex) {
+						dot.classList.add('active');
+					}
+				});
+
+				document.getElementById('current-slide').textContent = currentIndex + 1;
+
+				// Update the overlay View button to point to the current slide
+				const viewBtn = document.getElementById('slide-view-btn');
+				if (viewBtn && slides[currentIndex]) {
+					viewBtn.href = slides[currentIndex].link || '#';
+					viewBtn.textContent = 'View: ' + (slides[currentIndex].title || 'Details');
+					viewBtn.setAttribute('aria-label', 'View ' + (slides[currentIndex].title || 'details'));
+				}
+			}
+
+			// Go to specific slide
+			function currentSlide(n) {
+				clearTimeout(slideTimer);
+				currentIndex = n;
+				updateSlides();
+				autoNextSlide();
+			}
+
+			// Go to previous slide
+			function prevSlide() {
+				clearTimeout(slideTimer);
+				currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+				updateSlides();
+				autoNextSlide();
+			}
+
+			// Go to next slide
+			function nextSlide() {
+				clearTimeout(slideTimer);
+				currentIndex = (currentIndex + 1) % slides.length;
+				updateSlides();
+				autoNextSlide();
+			}
+
+			// Go to slide and navigate to link
+			function goToSlide(n, link) {
+				clearTimeout(slideTimer);
+				currentIndex = n;
+				updateSlides();
+				// Navigate to the link after a short delay for better UX
+				setTimeout(function() {
+					window.location.href = link;
+				}, 300);
+			}
+
+			// Auto advance to next slide
+			function autoNextSlide() {
+				slideTimer = setTimeout(function() {
+					currentIndex = (currentIndex + 1) % slides.length;
+					updateSlides();
+					autoNextSlide();
+				}, 5000); // Change slide every 5 seconds
+			}
+
+			// Initialize on page load
+			document.addEventListener('DOMContentLoaded', function() {
+				initSlideshow();
+			});
+
+			// Pause on hover
+			const slideshowContainer = document.querySelector('.slideshow-container');
+			if (slideshowContainer) {
+				slideshowContainer.addEventListener('mouseenter', function() {
+					clearTimeout(slideTimer);
+				});
+
+				slideshowContainer.addEventListener('mouseleave', function() {
+					autoNextSlide();
+				});
+			}
+		</script>
+
+	</body>
+</html>
