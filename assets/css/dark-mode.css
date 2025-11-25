@@ -90,6 +90,18 @@ body.dark-mode #drawer-right a {
     color: #e0e0e0;
 }
 
+/*/////////////////////////////////////////////*/
+
+body.dark-mode #header .top.solid {
+    background: #27323d;
+}
+
+body.dark-mode #contact {
+    background-color: #27323d;
+}
+
+/*/////////////////////////////////////////////*/
+
 body.dark-mode .slogan {
     color: #e0e0e0;
 }
