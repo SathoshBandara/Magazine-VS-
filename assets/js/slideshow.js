@@ -17,7 +17,7 @@
 				},
 				{
 					image: 'assets/images/newsletter-bg.png',
-					link: 'Recent Releases/Newest2.Html',
+					link: 'Recent Releases/Newest2.html',
 					title: 'Latest Magazine'
 				}
 			];
