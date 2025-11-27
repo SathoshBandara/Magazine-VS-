@@ -11,13 +11,13 @@
 					title: 'Notices & Articles'
 				},
 				{
-					image: 'assets/images/header-bg2.png',
+					image: 'assets/images/sample1.png',
 					link: 'about.html',
 					title: 'About Contributors'
 				},
 				{
 					image: 'assets/images/newsletter-bg.png',
-					link: 'Recent Releases/Newest.Html',
+					link: 'Recent Releases/Newest2.Html',
 					title: 'Latest Magazine'
 				}
 			];
