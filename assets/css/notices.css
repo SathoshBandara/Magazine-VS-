@@ -75,7 +75,14 @@
         }
 
         /* Main Container */
-        .container {
+        /*.container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Main Container */
+        .container3 {
             max-width: 1200px;
             margin: 40px auto;
             padding: 0 20px;
